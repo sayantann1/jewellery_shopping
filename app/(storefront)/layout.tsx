@@ -8,10 +8,10 @@ export default function StoreFrontLayout({
   children: ReactNode;
 }) {
   return (
-    <>
+    <div className="min-h-screen">
       <Navbar />
-      <main className=" mx-auto">{children}</main>
+      <main className=" mx-auto min-h-[70vh]">{children}</main>
       <Footer />
-    </>
+    </div>
   );
 }

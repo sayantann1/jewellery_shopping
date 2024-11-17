@@ -26,7 +26,6 @@ function HeroSection() {
       <div className="container absolute py-8 h-screen md:h-[800px] w-full">
         <div className="flex flex-col justify-center z-30 h-full">
           <p className="text-sm md:text-md uppercase tracking-widest text-slate-300 ">
-            hugolam
           </p>
           <h1 className="text-5xl md:text-9xl font-semibold text-gray-200 my-4 shadow-md [text-shadow:_0_1px_0_rgb(0_0_0_/_40%)]">
             Find Modern
