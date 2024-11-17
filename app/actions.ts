@@ -291,6 +291,8 @@ export async function checkOut() {
       },
     });
 
+    await redis.del(`cart-${session.metadata?.userId}`);
+
     return redirect(session.url as string);
   }
 }

@@ -26,18 +26,6 @@ export async function POST(req: Request) {
     case "checkout.session.completed": {
       const session = event.data.object;
 
-      console.log(session.metadata);
-      const cart = (await redis.get(`cart-${session.metadata?.userId}`)) as
-        | Cart
-        | null
-        | undefined;
-
-      console.log(cart);
-
-      const orderProducts = cart?.items.map((i) => {
-        return { product: { connect: { id: i.id } } };
-      });
-
       await prisma.order.update({
         where: {
           id: session.metadata?.orderId as string,
@@ -46,13 +34,9 @@ export async function POST(req: Request) {
           amount: session.amount_total as number,
           status: session.status as string,
           userId: session.metadata?.userId,
-          products: {
-            create: orderProducts,
-          },
         },
       });
 
-      await redis.del(`cart-${session.metadata?.userId}`);
       break;
     }
     default: {
