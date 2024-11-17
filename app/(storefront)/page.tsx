@@ -1,5 +1,3 @@
-"use client";
-
 import Link from "next/link";
 import { CategoriesSelection } from "../components/storefront/CategorySelection";
 import { FeaturedProducts } from "../components/storefront/FeaturedProducts";
@@ -17,7 +15,6 @@ import {
 
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { useState } from "react";
 
 function HeroSection() {
   return (
@@ -142,35 +139,6 @@ function FAQ() {
 }
 
 function Contactus() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
-  });
-
-  const handleChange = (e: any) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-  };
-
-  const handleSubmit = (e: any) => {
-    e.preventDefault();
-
-    const { name, email, subject, message } = formData;
-
-    const mailtoLink = `mailto:hi2jt3r@gmail.com?subject=${encodeURIComponent(
-      subject
-    )}&body=${encodeURIComponent(
-      `Name: ${name}\nEmail: ${email}\nMessage: ${message}`
-    )}`;
-
-    window.location.href = mailtoLink;
-  };
-
   return (
     <div>
       <main className="container mx-auto px-4 py-12">
@@ -198,7 +166,7 @@ function Contactus() {
               </p>
             </div>
           </div>
-          <form className="space-y-4" onSubmit={handleSubmit}>
+          <form className="space-y-4">
             <div>
               <label
                 htmlFor="name"
@@ -211,8 +179,6 @@ function Contactus() {
                 name="name"
                 placeholder="Your name"
                 className="mt-1"
-                value={formData.name}
-                onChange={handleChange}
               />
             </div>
             <div>
@@ -228,8 +194,6 @@ function Contactus() {
                 type="email"
                 placeholder="your@email.com"
                 className="mt-1"
-                value={formData.email}
-                onChange={handleChange}
               />
             </div>
             <div>
@@ -244,8 +208,6 @@ function Contactus() {
                 name="subject"
                 placeholder="How can we help?"
                 className="mt-1"
-                value={formData.subject}
-                onChange={handleChange}
               />
             </div>
             <div>
@@ -261,8 +223,6 @@ function Contactus() {
                 placeholder="Your message"
                 className="mt-1"
                 rows={4}
-                value={formData.message}
-                onChange={handleChange}
               />
             </div>
             <Button type="submit" className="w-full">
